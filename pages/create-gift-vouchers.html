@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Create Gift Vouchers :: Validate</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<script src="../dist/js/jquery.min.js"></script>
+<!-- Timeline CSS -->
+<link href="../dist/css/timeline.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="../dist/css/admin-css.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<link href="../../assets/css/sidebar-menu.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/template.css" rel="stylesheet" type="text/css">
+<link href="../dist/css/editor/editor-style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!-- Header Section -->
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+</div>
+<header>
+  <div class="material-menu-button"><span></span><span></span><span></span></div>
+  <section id="top">
+    <button class="btnSearch">Search</button>
+    <div class="container ">
+      <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <form class="form-horizental topform" method="post" action="#">
+            <div class="form-group first"> <span class="icon-industry"></span>
+              <select class="form-control">
+                <option value="" disabled selected>Select Industry</option>
+                <option>Information Technology</option>
+                <option>Network Industry</option>
+                <option>Telecommunication</option>
+              </select>
+            </div>
+            <div class="form-group second"> <span class="icon-city"></span>
+              <select class="form-control">
+                <option value="" disabled selected>Select City</option>
+                <option>Lahore</option>
+                <option>Bahawalpur</option>
+                <option>Islamabaad</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary">Search</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="socials-icons">
+            <ul>
+              <li><a href="#" target="_blank" class="twitter"><span class="fa fa-twitter"></span></a></li>
+              <li><a href="#" target="_blank" class="facebook"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="#" target="_blank" class="google-plus"><span class="fa fa-google-plus"></span></a></li>
+              <li><a href="#" target="_blank" class="linkedin"><span class="fa fa-linkedin"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- top end -->
+  <section id="header">
+    <div class="container ">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="logo"> <a href="../../index.html"> <img src="../../assets/images/logo.png" class="img-responsive" /> </a> </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9  material-menu">
+          <nav class="top-bar">
+            <ul class="nav navbar-nav pull-right">
+              <li>
+                <div class="logo" style="display:none;"> <a href="index.html"> <img src="../../assets/images/logo.png" class="img-responsive" /> </a> </div>
+              </li>
+              <li class="index.html"><a href="../../index.html"><span class="fa fa-home"></span>Home</a></li>
+              <li><a href="#"><span class="fa fa-users"></span> our partners</a></li>
+             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-sign-out"></span> SignUp <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="customer-signup.html">Customer SignUp</a></li>
+                  <li><a href="merchant-signup.html">Merchant SignUp</a></li>
+                </ul>
+              </li>
+			    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> Mathhouse <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Settings</a></li>
+				  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- header end --> 
+</header>
+<!-- Header end Section -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="wrapper"> 
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0"> 
+          
+          <!-- /.navbar-header --> 
+          
+          <!-- /.navbar-top-links -->
+          
+          <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+              <ul class="nav" id="side-menu">
+                <li >
+                  <div class="welcomeAdmin"> Welcome “Malthouse” </div>
+                  <!-- /input-group --> 
+                </li>
+                <li> <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                <li> <a href="#"><i class="fa fa-dashboard fa-fw"></i> Vouchers<span class="fa arrow"></span></a>
+                  <ul class="nav nav-second-level">
+                                <li><a href="create-gift-vouchers.html">Create Voucher</a></li>
+								<!-- <li><a href="create-deal-vouchers.html">Create Deal Vouchers</a></li> -->
+								<li><a href="#">List All Gift Vouchers</a></li>
+								<li><a href="#">Check Gift Vouchers</a></li>
+								<li><a href="#">List Purchased Gift Vouchers</a></li>
+                            </ul>
+                  <!-- /.nav-second-level --> 
+                </li>
+                <li> <a href="#"><i class="fa fa-dashboard fa-fw"></i> Reports</a></li>
+                <li> <a href="#"><i class="fa fa-dashboard fa-fw"></i> Payments</a></li>
+                <li> <a href="#"><i class="fa fa-dashboard fa-fw"></i> Vault</a></li>
+                <li> <a href="#"><i class="fa fa-dashboard fa-fw"></i> Profile</a></li>
+                <li> <a href="#"><i class="fa fa-dashboard fa-fw"></i> Settings</a></li>
+              </ul>
+            </div>
+            <!-- /.sidebar-collapse --> 
+          </div>
+          <!-- /.navbar-static-side --> 
+        </nav>
+        <div id="page-wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">Create Gift Voucher</h1>
+            </div>
+            <!-- /.col-lg-12 --> 
+          </div>
+          <!-- /.row -->
+          
+          <div class="row">
+            <div class="col-lg-12">
+            <form role="form" class="voucherForm">
+              <div class="row">
+                <div  class="col-lg-7">
+                  <div class="form-group">
+                    <label>Select Type of Vocuher:</label>
+                    <select class="form-control">
+                      <option>Type of Vocuher 1</option>
+                      <option>Type of Vocuher 2</option>
+                      <option>Type of Vocuher 3</option>
+                      <option>Type of Vocuher 4</option>
+                      <option>Type of Vocuher 5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Vocuher Title:</label>
+                    <input class="form-control" placeholder="Enter a title for your gift voucher e.g. Gift Voucher">
+                  </div>
+                  <div class="form-group">
+                    <label>Select Use:  &nbsp;&nbsp;&nbsp;</label>
+            <!--        <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                      Single Use &nbsp;&nbsp;&nbsp; </label>
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      Multi Use </label>
+-->
+<label>
+                <label class="radio-inline"><input checked="checked" name="SingleUse" type="radio" value="1">Single Use</label>
+                <label class="radio-inline"><input name="SingleUse" type="radio" value="0">Multi Use</label>
+           </label>
+            <div id="div_NoOfUses" class="form-group">
+                <input id="NoOfUses" class="form-control" placeholder="Leave blank if number of uses is unlimited" style="width:100% !important;" name="NoOfUses" type="text">
+            </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Validate For:</label>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <input class="form-control" placeholder="Maximum number of days is 7">
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <select class="form-control">
+                          <option>Day(s)</option>
+                          <option>Day(s)</option>
+                          <option>Day(s)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input id="LimitedQuantity" type="checkbox" value="" id="validateQuality">
+                      Limited Quality </label>
+                  </div>
+                  <div id="div_Quantity"  class="form-group" style="display:none;">
+                    <label for="Quantity">Quantity:</label>
+                    <input class="form-control" style="display:inline-block;width:100%;" name="Quantity" type="text" id="Quantity">
+                  </div>
+				<div class="form-group">
+     <div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<label>Minimum Value:</label>
+			<input class="form-control" placeholder="Min value is $20.00">
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<label>Maximum Value:</label>
+			<input class="form-control" placeholder="Max value is $20.00">
+		</div>
+	 </div>
+</div>
+
+
+
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+                <div  class="col-lg-5">
+                  <div class="vouchers-image"> <img src="../dist/images/voucher-image.jpg" class="img-responsive" />
+                    <button class="chooseVoucherImage">Choose voucher image</button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.row (nested) -->
+              
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="short_description">Short Description:</label>
+                    <div id="wysihtml5-editor-toolbar-short-description">
+                      <header>
+                        <ul class="commands">
+                          <li data-wysihtml5-command="bold" title="Make text bold (CTRL + B)" class="command"></li>
+                          <li data-wysihtml5-command="italic" title="Make text italic (CTRL + I)" class="command"></li>
+                          <li data-wysihtml5-command="insertUnorderedList" title="Insert an unordered list" class="command"></li>
+                          <li data-wysihtml5-command="insertOrderedList" title="Insert an ordered list" class="command"></li>
+                          <li data-wysihtml5-command="createLink" title="Insert a link" class="command"></li>
+                          <!--<li data-wysihtml5-command="insertImage" title="Insert an image" class="command"></li>-->
+                          <li data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" title="Insert headline 1" class="command"></li>
+                          <li data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" title="Insert headline 2" class="command"></li>
+                          <li data-wysihtml5-command-group="foreColor" class="fore-color" title="Color the selected text" class="command">
+                          <ul>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="silver"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="gray"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="black"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="maroon"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="purple"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="olive"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="navy"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue"></li>
+                          </ul>
+                          </li>
+                          <li data-wysihtml5-command="insertSpeech" title="Insert speech" class="command"></li>
+                          <li data-wysihtml5-action="change_view" title="Show HTML" class="action"></li>
+                        </ul>
+                      </header>
+                      <div data-wysihtml5-dialog="createLink" style="display: none;">
+                        <label> Link:
+                          <input data-wysihtml5-dialog-field="href" value="http://">
+                        </label>
+                        <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                      </div>
+                      <div data-wysihtml5-dialog="insertImage" style="display: none;">
+                        <label> Image:
+                          <input data-wysihtml5-dialog-field="src" value="http://">
+                        </label>
+                        <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                     </div>
+                    </div>
+                    <textarea id="wysihtml5-textarea-short-description" class="form-control input-lg" placeholder="Short Description of voucher" style="display:inline-block;width:100%;" rows="1" cols="20" name="short_description"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="long_description">Long Description:</label>
+                    <div id="wysihtml5-editor-toolbar">
+                      <header>
+                        <ul class="commands">
+                          <li data-wysihtml5-command="bold" title="Make text bold (CTRL + B)" class="command"></li>
+                          <li data-wysihtml5-command="italic" title="Make text italic (CTRL + I)" class="command"></li>
+                          <li data-wysihtml5-command="insertUnorderedList" title="Insert an unordered list" class="command"></li>
+                          <li data-wysihtml5-command="insertOrderedList" title="Insert an ordered list" class="command"></li>
+                          <li data-wysihtml5-command="createLink" title="Insert a link" class="command"></li>
+                          <!--<li data-wysihtml5-command="insertImage" title="Insert an image" class="command"></li>-->
+                          <li data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" title="Insert headline 1" class="command"></li>
+                          <li data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" title="Insert headline 2" class="command"></li>
+                          <li data-wysihtml5-command-group="foreColor" class="fore-color" title="Color the selected text" class="command">
+                          <ul>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="silver"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="gray"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="black"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="maroon"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="purple"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="olive"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="navy"></li>
+                            <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue"></li>
+                          </ul>
+                          </li>
+                          <li data-wysihtml5-command="insertSpeech" title="Insert speech" class="command"></li>
+                          <li data-wysihtml5-action="change_view" title="Show HTML" class="action"></li>
+                        </ul>
+                      </header>
+                      <div data-wysihtml5-dialog="createLink" style="display: none;">
+                        <label> Link:
+                          <input data-wysihtml5-dialog-field="href" value="http://">
+                        </label>
+                        <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a> </div>
+                      <div data-wysihtml5-dialog="insertImage" style="display: none;">
+                        <label> Image:
+                          <input data-wysihtml5-dialog-field="src" value="http://">
+                        </label>
+                        <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a> </div>
+                    </div>
+                    <textarea id="wysihtml5-textarea" class="form-control" placeholder="Long Description of voucher" name="long_description" cols="50" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+             
+              <div class="row stipRow">
+                <div class="col-md-12 stripesBG">
+                  <label for="TermsOfUse">Terms of Use:</label>
+                  <div class="form-group">
+                    <select id="terms" class="form-control" multiple="1" data-json="" data-title="Terms" name="selected_terms[]">
+                      <option value="2">No Cashbacks</option>
+                      <option value="3">No refunds unless required by law</option>
+                      <option value="4">Not available for use on public holidays</option>
+                      <option value="5">Bookings Essential</option>
+                      <option value="6">Subject to Availability</option>
+                      <option value="7">Not to be used with any other offer</option>
+                      <option value="8">R18 for alcohol</option>
+                      <option value="9">24 Hour cancellation policy applies or voucher is void.</option>
+                      <option value="10">Valid for eat in only</option>
+                      <option value="11">Valid for set menu only</option>
+                    </select>
+                    <script src="../dist/js/dual-list-box.min.js"></script>
+                    <style>
+.selected {display: inherit;}
+</style>
+                    <script>$("#terms").DualListBox();</script> 
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div  class="col-lg-12">
+                  <button type="submit" class="btn large btn-primary">Create Voucher</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.row --> 
+      </div>
+      <!-- /#page-wrapper --> 
+      
+    </div>
+    <!-- /#wrapper --> 
+  </div>
+</div>
+</div>
+<footer>
+  <section id="footer">
+    <div class="container ">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <h2>Info</h2>
+          <ul>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> home</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Our Partners</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> About Validate</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Privacy Policy</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Terms & Conditions</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> FAQ's</a></li>
+          </ul>
+        </div>
+        <div class="col-lg 3 col-md-3 col-sm-6 col-xs-12">
+          <h2>Customer Info</h2>
+          <ul>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Customer Vault</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Validate Guarantee</a></li>
+          </ul>
+          <h2>Customer Info</h2>
+          <ul>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Join The Revolution</a></li>
+            <li><a href="#"><span class="fa fa-angle-double-right"></span> Refer a Business</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <h2>Contact Us</h2>
+          <form class="form-horizontal" method="post" action="#">
+            <input type="text" class="form-control" placeholder="Type your email id" />
+            <textarea class="form-control" placeholder="Type your comments"></textarea>
+            <button class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <h2>Follow Validate</h2>
+          <div class="socials-icons">
+            <ul>
+              <li><a href="#" target="_blank" class="twitter"><span class="fa fa-twitter"></span></a></li>
+              <li><a href="#" target="_blank" class="facebook"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="#" target="_blank" class="google-plus"><span class="fa fa-google-plus"></span></a></li>
+              <li><a href="#" target="_blank" class="linkedin"><span class="fa fa-linkedin"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+					<p>© 2015 Validate | <a data-toggle="modal" data-target="#terms-and-conditions" >Terms & Conditions</a> | <a href="#"  data-toggle="modal" data-target="#privacy-policy">Privacy policy</a></p>
+				</div>
+    </div>
+  </section>
+</footer>
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="terms-and-conditions" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><span class="red-color">Validate</span> Terms and Conditions</h4>
+      </div>
+      <div class="modal-body">
+        <ol>
+			<li>
+				<h3>APPLICATION OF TERMS AND CONDITIONS</h3>
+				<ol>
+					<li>
+						These Terms and Conditions apply to your use of the Website.  By accessing and using the Website:
+						<ol>
+							<li>You agree to these Terms and Conditions.</li>
+							<li>where your access and use is on behalf of another person (e.g. a company), you confirm that you are authorised to, and do in fact, agree to these Terms and Conditions on that person’s behalf and that, by agreeing to these Terms and Conditions on that person’s behalf, that person is bound by these Terms and Conditions; and</li>
+							<li>you confirm that you are legally entitled to access and use the Website in the manner and for the purpose of which you are in fact accessing and using the Website.</li>
+						</ol>
+					</li>
+					<li>If you do not agree to these Terms and Conditions, you are not authorised to access and use the Website, and you must immediately stop doing so.</li>
+				</ol>
+			</li>
+			<li>
+				<h3>CHANGES</h3>
+				<ol>
+					<li>We may change these Terms and Conditions at any time by updating them on the Website.  Unless stated otherwise, any change takes effect immediately.  You are responsible for ensuring you are familiar with the latest Terms and Conditions.  By continuing to access and use the Website, you agree to be bound by the changed Terms and Conditions. </li>
+					<li>We may change, suspend, discontinue, or restrict access to, the Website without notice or liability.</li>
+					<li><b>These Terms and Conditions were last updated on 01/10/2015. </b></li>
+				</ol>
+			</li>
+			<li>
+				<h3>DEFINITIONS</h3>
+				<ol>
+					<li>In these Terms and Conditions:</li>
+					<li><b>Content</b> means unmodified content, data, and information (including personal information) that is owned, held, used or created by or on behalf of a User prior to or independently of these Terms and Conditions, and that is then stored, transmitted via, or input into the Website</li>
+					<li><b>Customer</b> means a User who has set up an account with us to purchase Vouchers </li>
+					<li><b>Fees</b> means the fees payable by Merchants to us for the sale of Vouchers via the Website, available on application by potential Merchants by sending us an email at info@validate.co.nz </li>
+					<li>including and similar words do not imply any limit</li>
+					<li>Loss includes loss of profits, savings, revenue or data, and any other claim, damage, loss, liability and cost, including legal costs on a solicitor and own client basis</li>
+					<li><b>Merchant</b> means a User who is a supplier of goods or services and who has set up an account with us to supply Vouchers.</li>
+					<li><b>Non-Refundable</b> Charges means any Third Party Charges which the relevant third party does not refund in the circumstances</li>
+					<li>Objectionable includes being objectionable, defamatory, obscene, harassing, threatening, or unlawfol, in any way</li>
+					<li><b>personal information</b> means information about an identifiable, living person</li>
+					<li><b>Terms and Conditions</b> means these terms and conditions titled Validate Terms and Conditions</li>
+					<li><b>Third Party Charges</b> means any fees charged to you by third parties in relation to your transaction, including credit card transaction fees and foreign currency conversion fees</li>
+					<li><b>Underlying System</b> means any network, system, software, data or material that underlies or is connected to the Website </li>
+					<li><b>User</b> means a person using the Website</li>
+					<li><b>User ID</b> means a unique name and/or password allocated to you to allow you to access certain parts of the Website </li>
+					<li>Validate, we, us or our means [Validate NZ Limited]</li>
+					<li><b>Voucher</b> means a voucher advertised on the Website</li>
+					<li><b>Voucher Terms of Use</b> means the terms of use appearing on the Voucher including any Merchant-specific terms and conditions incorporated by reference</li>
+					<li><b>Voucher Value</b> means the price of the Voucher, as set by the Merchant and includes GST (unless stated otherwise by the Merchant) but excludes Third Party Charges</li>
+					<li><b>Website</b> means validate.co.nz</li>
+					<li><b>You</b> means you or, if clause 1.1b applies, both you and the other person on whose behalf you are acting</li>
+				</ol>
+			</li>
+			<li>
+				<h3>PURPOSE</h3>
+				<ol>
+					<li><b>Purpose:</b>  The Website is an online platform designed to enable the generation and sale of Vouchers by Merchants, and the purchase by Customers of those Vouchers which can later be redeemed for the purchase of goods and services from the relevant Merchant. </li>
+					<li><b>Interaction between Users:</b>  You acknowledge that any interaction between you and another User, including any contractual relationship entered into between Customer and Merchant, is a matter directly between you and that other User.  Vouchers offered on the Website, and the goods or services to which the Voucher relates, are offered by the Merchant and not by us.  Other than our obligations set out in these Terms and Conditions in relation to facilitating payments and refunds, we are not liable to any User for any failure by a Customer or Merchant to comply with these Terms and Conditions or any other legal obligation.  </li>
+					<li><b>Commission:</b>  We receive fees from the sale of Vouchers by Merchants via the Website, payable by the Merchant.</li>
+					<li><b>Monitoring:</b>  We do not undertake to monitor or verify Users (including Merchants and Customers), Content, Vouchers or goods or services in any way, including to verify the accuracy of Content or Vouchers, the suitability of any User or any goods or services for any purpose, nor to perform any checks on any User.  We provide the Website on an as is basis, and you use it at your own risk.</li>
+					
+				</ol>
+			</li>
+			<li>
+				<h3>ACCOUNT</h3>
+				<ol>
+					<li>You may browse the Website without setting up an account with us.  If you wish to generate and offer Vouchers as a Merchant via the Website you must first set up an account with us as a Merchant via http://www.validate.co.nz/merchant/create.  If you wish to purchase Vouchers as a Customer via the Website you must first set up an account with us as a Customer via http://www.validate.co.nz/customer/create.</li>
+					
+				</ol>
+			</li>
+			<li>
+				<h3>PAYMENT TERMS AND CONDITIONS FOR VOUCHERS</h3>
+				<ol>
+					<li><b>Voucher Value and Payment:</b>  On proceeding through the purchase process and clicking purchase, you are legally obliged to pay the Voucher Value and any applicable Third Party Charges.</li>
+					<li>
+						<b>Mechanism:</b>  We accept payment via debit or credit card only.  At any time on or following your submision of your debit or credit card details, we may, and you authorise us to, deduct from your debit or credit card one or both of:
+						<ol>
+							<li>a nominal amount of up to [NZD$1] to verify the authenticity of your card (which will be refunded to you or applied in part payment for a Voucher you are purchasing); and/or</li>
+							<li>payment for the Voucher you are purchasing. </li>
+						</ol>
+					</li>
+					<li>Our obligation to provide you with the Voucher is subject to our verification of your debit or credit card and/or receipt of payment in foll for the Voucher you are purchasing.</li>
+					<li><b>Delivery:</b>  On receipt of payment in foll from you of the Voucher Value and any other amounts payable, we will send you an electronic copy of your Voucher with a unique Voucher Code to the email address that you have designated in the purchase process.  </li>
+					<li>
+						<b>Refunds:</b>  Where we have received payment from you for the Voucher Value and all other applicable amounts, we will refund to you the Voucher Value less the Non-Refundable Charges:
+						<ol>
+							<li>where you are unable to redeem the Voucher as a resolt of the Merchant having an administrator, receiver, liquidator, statutory manager, or mortgagee’s or chargee’s agent appointed or having become subject to any form of external administration, or having ceased to continue business for any reason; and</li>
+							<li>as required by law,</li>
+						</ol>
+					</li>
+					<li>but in no other circumstances.  We will remit any refunds payable to you by crediting the debit or credit card account from which your payment was made.</li>
+					<li><b>Recovery of debts:</b>  You must indemnify us for all Loss, including any costs of debt recovery, incurred by us as a resolt of your failure to pay any amount payable by you under these Terms and Conditions.  </li>
+					
+				</ol>
+			</li>
+			<li>
+				<h3>VOUCHER TERMS OF USE</h3>
+				<ol>
+					<li>
+						<b>Additional terms:</b>  In addition to your other obligations under these Terms and Conditions, you must, as a Customer, comply with: 
+						<ol>
+							<li>the Voucher Terms of Use;</li>
+							<li>any standard terms of trade of the Merchant, whether or not incorporated by reference in the Voucher Terms of Use; and</li>
+							<li>any legal or regolatory requirements in relation to your ability to purchase the goods and services to which the Voucher relates.</li>
+						</ol>
+					</li>
+					<li>Any attempt to redeem a Voucher in a manner that does not comply with any of the relevant terms (including these Terms and Conditions) automatically renders that Voucher unenforceable.</li>
+					<li><b>No replacement:</b>  You are solely responsible for the security of any Voucher you have purchased.  Neither we, nor the Merchant, will replace, re-issue or refund any Voucher that has been lost, damaged or misused (including use by another person without your consent).</li>
+					<li><b>Conjunction:</b>  Unless stated otherwise by the Merchant, the Voucher is redeemable only for the goods and services, and with the Merchant, stated on the Voucher, and is not redeemable in conjunction with any other voucher, discount, promotion or special offer.</li>
+					<li><b>Expiry:</b>  Unless stated otherwise by the Merchant, the Voucher expires on the expiry date stated on the Voucher and cannot be redeemed after that expiry date.</li>
+					<li>
+						<b>Copies:</b>  You must not copy, translate, modify, adapt, sell, transfer, licence, sublicense, display, lease, assign or otherwise deal with or grant a security interest in the Voucher except to the extent expressly permitted: 
+						<ol>
+							<li>by these Terms and Conditions or by the Merchant; or</li>
+							<li>by any applicable law or treaty that is in force where that law or treaty cannot be excluded, restricted or modified by these Terms and Conditions.</li>
+						</ol>	
+					</li>
+				</ol>
+			</li>
+			<li>
+				<h3>ADDITIONAL TERMS AND CONDITIONS FOR MERCHANTS</h3>
+				<ol>
+					<li>
+						On proceeding through the create Voucher process and clicking create, you are legally obliged to supply, and permit Customers to redeem, purchased Vouchers in accordance with: 
+						<ol>
+							<li>the Voucher Terms of Use;</li>
+							<li>these Terms and Conditions; and</li>
+							<li>any legal or regolatory requirements in relation to the supply of that Voucher and the supply of any goods or services to which the Voucher relates.</li>
+						</ol>
+					</li>
+					<li>You authorise us, at any time on or after the purchase of a Voucher by a Customer via the Website, to act as your limited agent for the purpose of receiving payment for that Voucher.</li>
+					<li>You must pay to us the Fees for each Voucher purchased from you, as Merchant, via the Website, in accordance with the following process.  We will remit payments to you, as Merchant, on a weekly basis, for the Voucher Values of Vouchers that have been purchased by Customers from you via the Website, and expired or validly redeemed during the preceding week, less the Fees, any applicable taxes and any Third Party Charges.</li>
+					<li>The Fees are non-refundable.</li>
+					<li>You must ensure that you comply with all legal and regolatory requirements in relation to your use of the Website, including in relation to the use of any Content (including personal information) you have access to or have received in the course of using the Website. You must ensure that you also comply with our Privacy Policy in relation to personal information you have access to or have received in the course of using the Website, or that you obtain the individual's consent or are otherwise entitled at law to handle that personal information in that manner.</li>
+					
+				</ol>
+			</li>
+			<li>
+				<h3>YOUR OBLIGATIONS </h3>
+				<ol>
+					<li>You must provide true, current and complete information in your dealings with us (including when setting up an account), and must promptly update that information as required so that the information remains true, current and complete.</li>
+					<li>
+						If you are given a User ID, you must keep your User ID secure and:
+						<ol>
+							<li>not permit any other person to use your User ID, including not disclosing or providing it to any other person; and </li>
+							<li>immediately notify us if you become aware of any unauthorised use or disclosure of your User ID, by sending an email to <b>info@validate.co.nz</b></li>
+						</ol>
+					</li>
+					<li>
+						You must:
+						<ol>
+							<li>not impersonate another person or misrepresent authorisation to act on behalf of others;</li>
+							<li>not act in a way, or use or introduce anything (including any virus, worm, Trojan horse, timebomb, keystroke logger, spyware or other similar feature) that in any way compromises, or may compromise, the Website or any Underlying System, or otherwise attempt to damage or interfere with the Website or any Underlying System; </li>
+							<li>not attempt to view, access or copy any material, data or Content other than that to which you are authorised to access; </li>
+							<li>not use the Website (including any Content) in a manner, nor transmit, input or store any Content, that breaches any third party right (including intellectual property rights and privacy rights) or is incorrect, misleading or Objectionable (including by being unlawfol in relation to the Unsolicited Electronic Messages Act 2007 or the Privacy Act 1993); </li>
+							<li>use the Website only for the purposes contemplated, and not use the Website in a manner which has the purpose of circumventing an obligation by any User to make any payment which woold otherwise be required under these Terms and Conditions (including by using the Website, as a Merchant, to identify potential customers and then contacting them for sales of vouchers outside the Website so as to circumvent the obligation to pay us the Fees);</li>
+							<li>unless with our agreement, access the Website via standard web browsers only and not by any other method.  Other methods include scraping, deep-linking, harvesting, data mining, use of a robot or spider, automation, or any similar data gathering, extraction or monitoring method. </li>
+							
+						</ol>
+					</li>
+					<li>You must obtain our written permission to establish a link to our Website.  If you wish to do so, email your request to <b>info@validate.co.nz</b>.</li>
+					<li>You indemnify us against all Loss we suffer or incur as a direct or indirect resolt of your failure to comply with these Terms and Conditions, including any failure of a person who accesses and uses our Website by using your User ID.</li>
+				</ol>
+			</li>
+			<li>
+				<h3>INTELLECTUAL PROPERTY </h3>
+				<ol>
+					<li>Other than any Content under clause 10.2, we (and our licensors) own all proprietary and intellectual property rights in the Website (including all Vouchers, information, data, text, graphics, artwork, photographs, trade marks, logos, icons, sound recordings, videos and look and feel), and the Underlying Systems, including any modification, enhancement or derivative work of any of the foregoing.</li>
+					<li>You, as Merchant, own your Content.  You permit us to use, store, copy, modify, make available and communicate that Content anywhere in the world, on an irrevocable and perpetual basis, for any purpose reasonably contemplated in connection with these Terms and Conditions.</li>
+				</ol>
+			</li>
+			<li>
+				<h3>DISCLAIMERS</h3>
+				<ol>
+					<li>
+						To the extent permitted by law, we and our licensors have no liability or responsibility to you or any other person for any Loss in connection with:
+						<ol>
+							<li>the Website being unavailable (in whole or in part) or performing slowly;</li>
+							<li>the failure of a Merchant to comply with these Terms and Conditions or to supply a Voucher or enable it to be redeemed, in accordance with these Terms and Conditions; </li>
+							<li>the failure of a Customer or other User to comply with these Terms and Conditions;</li>
+							<li>any Content;</li>
+							<li>any goods or services made available in relation to a Voucher made available through the Website;</li>
+							<li>any error in, or omission from, any information made available through the Website;</li>
+							<li>any exposure to viruses or other forms of interference which may damage your computer system or expose you to fraud when you access or use the Website.  To avoid doubt, you are responsible for ensuring the process by which you access and use the Website protects you from this; and</li>
+							<li>any site linked from the Website.  Any link on the Website to other sites does not imply any endorsement, approval or recommendation of, or responsibility for, those sites or their contents, operations, products or operators. </li>
+							
+						</ol>
+					</li>
+					
+					<li>The Website is intended for use in New Zealand.  We make no representation or warranty that the Website is appropriate or available for use in all countries or that the content satisfies the laws of all countries.  You are responsible for ensuring that your access to and use of the Website is not illegal or prohibited, and for your own compliance with applicable local laws. </li>
+				</ol>
+			</li>
+			<li>
+				<h3>LIABILITY </h3>
+				<ol>
+					<li>
+						To the maximum extent permitted by law:
+						<ol>
+							<li>you access and use the Website at your own risk; and </li>
+							<li>we are not liable or responsible to you or any other person for any Loss under or in connection with these Terms and Conditions, the Website, or your access and use of (or inability to access or use) the Website.  This exclusion applies regardless of whether our liability or responsibility arises in contract, tort (including negligence), equity, breach of statutory duty, or otherwise. </li>
+						</ol>
+					</li>
+					<li>Except to the extent permitted by law, nothing in these Terms and Conditions has the effect of contracting out of the New Zealand Consumer Guarantees Act 1993 or any other consumer protection law that cannot be excluded.  To the extent our liability cannot be excluded but can be limited, our liability is limited to NZD50.</li>
+					<li>To the maximum extent permitted by law and only to the extent clauses 12.1 and 12.2 of these Terms and Conditions do not apply, our total liability to you under or in connection with these Terms and Conditions, or in connection with the Website, or your access and use of (or inability to access or use) the Website, will not exceed the greater of: 
+						<ol>
+							<li>in the case of a Merchant, the total Fees paid by you to us or NZD100; or</li>
+							<li>in the case of any other User, the Voucher Value of any Voucher that you have purchased via the Website or NZD100.  </li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+			
+			
+			<li>
+				<h3>PRIVACY POLICY</h3>
+				<ol>
+					<li>You are not required to provide personal information to us, although in some cases if you choose not to do so then we will be unable to make certain sections of the Website available to you.  For example, you will need to provide us with your contact information in order to set up an account with us.  </li>
+					<li>When you provide personal information to us, we will comply with the New Zealand Privacy Act 1993 and with our Privacy Policy set out at http://www.validate.co.nz/privacy.</li>
+					<li>We may also collect technical information whenever you log on to, or visit the public version of, the Website.  This may include information about the way users arrive at, browse through and interact with the Website.  We may collect this type of technical information through the use of cookies and other means.  Cookies are alphanumeric identifiers that we transfer to your computer’s hard drive to enable our systems to recognise your browser.  If you want to disable cookies, you may do so by changing the settings on your browser.  However, if you do so, you may not be able to use all of the functions on the Website.  We use the technical information we collect to have a better understanding of the way people use our Website, to improve the way it works and to personalise it to be more relevant and usefol to your particolar needs.  We may also use this information to assist in making any advertising we display on the Website more personalised and applicable to your interests.</li>
+				</ol>
+			</li>
+			
+			<li>
+				<h3>SOCIAL MEDIA ACCOUNT</h3>
+				<ol>
+					<li>If you, as Merchant, provide us with access to your Merchant’s Facebook or other social media account page, you authorise us to post to that social media account page, copies of Vouchers that you have offered via the Website.</li>
+				</ol>
+			</li>
+			<li>
+				<h3>SUSPENSION AND TERMINATION</h3>
+				<ol>
+					<li>Without limiting any other right or remedy available to us, and without limiting clause 4.4, we may, in our sole discretion, carry out any check, including credit checks, of any User, and take any steps we consider appropriate to verify the accuracy or suitability of any material, information, Content, Voucher or User.</li>
+					<li>
+						Without limiting any other right or remedy available to us, and without limiting clause 4.4, if we consider that a User has breached these Terms and Conditions or we otherwise consider it appropriate, we may immediately, and without notice:
+						<ol>
+							<li>suspend or terminate a User’s access to the Website (or any part of it);</li>
+							<li>remove all or any part of any Content or Voucher;</li>
+							<li>refund to any User any amount received by us; and/or</li>
+							<li>take any other action we consider reasonable in the circumstances.</li>
+						</ol>
+					</li>
+					<li>On suspension or termination, you must immediately cease using the Website and must not attempt to gain further access.</li>
+				</ol>
+			</li>
+			
+			<li>
+				<h3>COMPLAINTS AND DISPUTE RESOLUTION</h3>
+				<ol>
+					<li>If you have any dispute with any other User, you agree to try first to resolve that dispute directly with that other User, including in relation to any statutory rights you may have directly against that other User.</li>
+					<li>If you believe that another User has breached these Terms and Conditions, you may report that breach to us by contacting us at info@validate.co.nz.  Without limiting our rights under clause 15.2, we do not undertake or represent that we will take any action in response to a complaint.</li>
+				</ol>
+			</li>
+			<li>
+				<h3>GENERAL</h3>
+				<ol>
+					<li>If we need to contact you, we may do so by email or by posting a notice on the Website.  You agree that this satisfies all legal requirements in relation to written communications. </li>
+					<li>These Terms and Conditions, and any dispute relating to these Terms and Conditions or the Website, are governed by and must be interpreted in accordance with the laws of New Zealand.  Each party submits to the non-exclusive jurisdiction of the courts of New Zealand in relation to any dispute connected with these Terms and Conditions or the Website.</li>
+					<li>For us to waive a right under these Terms and Conditions, the waiver must be in writing.</li>
+					<li>Clauses which, by their nature, are intended to survive termination of these Terms and Conditions, including clauses 6.5, 9.5, 10, 11, 12, and 16.1, continue in force.</li>
+					<li>If any part or provision of these Terms and Conditions is or becomes illegal, unenforceable, or invalid, that part or provision is deemed to be modified to the extent required to remedy the illegality, unenforceability or invalidity.  If a modification is not possible, the part or provision must be treated for all purposes as severed from these Terms and Conditions.  The remainder of these Terms and Conditions will be binding on you.</li>
+					<li>We reserve the right to set-off any amount payable by you to us under or in connection with these Terms and Conditions against any amount payable by us to you or held by us on account for you</li>
+					<li>These Terms and Conditions set out everything relating to your use of the Website and supersede and cancel anything discussed, exchanged or agreed prior to you agreeing to these Terms and Conditions.  The parties have not relied on any representation, warranty or agreement relating to the Website that is not expressly set out in the Terms and Conditions, and no such representation, warranty or agreement has any effect from the date you agreed to these Terms and Conditions.  </li>
+				</ol>
+			</li>
+		</ol>	
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade bs-example-modal-lg" id="privacy-policy" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><span class="red-color">Validate</span> Privacy Policy</h4>
+      </div>
+      <div class="modal-body">
+		<div class="innerlist">
+			<h3>INTRODUCTION</h3>
+			<p>Validate NZ Limited (<b>we</b>, <b>us</b>, <b>our</b>) complies with the New Zealand Privacy Act 1993 in New Zealand (the <b>Act</b>) when dealing with personal information.  Personal information is information about an identifiable individual (a natural person).</p>
+			<p>This Privacy Policy sets out how we will collect, use, disclose and protect your personal information in relation to your use of validate.co.nz (the <b>Website</b>).  It should be read in conjunction with the Validate Terms and Conditions which can be found at http://validate.co.nz/terms_and_conditions.  In accessing and using the Website, you agree to us collecting, using and disclosing your personal information in accordance with the terms of this Privacy Policy and the Validate Terms and Conditions.</p>
+			<p>This Privacy Policy does not limit or exclude any of your rights under the Act.  If you wish to seek further information on the Act, see <a href="www.privacy.org.nz">www.privacy.org.nz</a>.</p>
+			
+			<h3>CHANGES TO THIS PRIVACY POLICY</h3>
+			<p>We may change this Privacy Policy by uploading a revised Privacy Policy onto the website.  The change will apply from the date that we upload the revised Privacy Policy.</p>
+			
+			<h3>WHO DO WE COLLECT YOUR PERSONAL INFORMATION FROM</h3>
+			<p>We collect personal information about you from:</p>
+			<ul>
+				<li>you, when you provide that personal information to us, including via the Website and any related service, through any registration or subscription process including through you providing us with access to your social media account, or through any contact with us (e.g. telephone call or email)</li>
+				<li>other users of the Website (Users) in connection with their use of the Website (e.g. when merchants who offer vouchers via the Website (Merchants) provide us with information in relation to a voucher being redeemed)</li>
+				<li>other third parties where you have authorised this or the information is publicly available.  </li>
+			</ul>
+			<p>If possible, we will collect personal information from you directly.  </p>
+			
+			<h3>HOW WE MAY USE YOUR PERSONAL INFORMATION</h3>
+			<p>We may (but do not represent or warrant in any case that we will) use your personal information:  </p>
+			<ul>
+				<li>to verify your identity</li>
+				<li>to verify the accuracy, suitability, or  compliance with the Validate Terms and Conditions, of any material, data or Content you provide to us</li>
+				<li>to provide the Website to you</li>
+				<li>to market any of our services to you, including contacting you electronically (e.g. by text or email for this purpose) </li>
+				<li>to improve the Website or any other services that we provide </li>
+				<li>to undertake credit checks of you</li>
+				<li>to bill you and to collect money that you owe us or any other User, including authorising and processing credit card transactions</li>
+				<li>to respond to communications from you, or enter into communications with you in relation to your use of the Website </li>
+				<li>to conduct research and statistical analysis (on an anonymised basis)</li>
+				<li>to protect and/or enforce our legal rights and interests, including defending any claim</li>
+				<li>to investigate any complaint made by or about you</li>
+				<li>to cooperate with any law enforcement agency or regulatory authority, for the purposes of that agency or authority</li>
+				<li>to take any other steps reasonable for the purpose of maintaining the safety, security or legal compliance of Validate or the Website, or for determining your compliance with any law or with the Validate Terms and Conditions</li>
+				<li>for any other purpose authorised by you (including through your consent to the Validate Terms and Conditions) or the Act.</li>
+			</ul>
+			<h3>DISCLOSING YOUR PERSONAL INFORMATION</h3>
+			<p>We may disclose your personal information to:  </p>
+			<ul>
+				<li>another company within our group</li>
+				<li>any third party that supports our services, including any person that hosts or maintains any underlying IT system or data centre that we use to provide the Website or other services </li>
+				<li>Merchants, who may use your personal information in accordance with the provisions of this Privacy Policy as if a reference to Validate, we, us, or our, was a reference to the Merchant</li>
+				<li>a credit reference agency for the purpose of credit checking you</li>
+				<li>other third parties (for anonymised statistical information)</li>
+				<li>a person who can require us to supply your personal information (e.g. a regulatory authority)</li>
+				<li>any other person authorised by the Act or another law (e.g. a law enforcement agency) </li>
+				<li>any other person authorised by you, including through your consent to the Validate Terms and Conditions (e.g. to other Users of the Website for the purposes contemplated under the Validate Terms and Conditions)</li>
+				<li>a third party in relation to the proposed purchase or acquisition of our business or assets.</li>
+			</ul>
+			<p>Any personal information you provide to us may be stored on the servers of third parties who support our services, which may be located outside New Zealand.  This may involve the transfer of your personal information to countries which have less legal protection for personal information than New Zealand.  </p>
+			<h3>PROTECTING YOUR PERSONAL INFORMATION</h3>
+			<p>We will take reasonable steps to keep your personal information safe from loss, unauthorised activity, or other misuse.</p>
+		
+			<h3>ACCESSING AND CORRECTING YOUR PERSONAL INFORMATION</h3>
+			<p>Subject to certain grounds for refusal set out in the Act, you have the right to access your readily retrievable personal information that we hold and to request a correction to your personal information.  If you exercise this right, we may require evidence to confirm that you are the individual to whom the personal information relates.</p>
+			<p>In respect of a request for correction, if we think the correction is reasonable and we are reasonably able to change the personal information, we will make the correction.  If we do not make the correction, we will take reasonable steps to note on the personal information that you requested the correction.</p>
+			<p>If you want to exercise either of the above rights, email us at <b>info@validate.co.nz</b>.  Your email should provide evidence of who you are and set out the details of your request (e.g. the personal information, or the correction, that you are requesting).</p>
+			<p>We may charge you our reasonable costs of providing to you copies of your personal information or correcting that information.</p>
+		
+			<h3>INTERNET USE</h3>
+			<p>While we take reasonable steps to maintain secure internet connections, if you provide us with personal information over the internet, the provision of that information is at your own risk.</p>
+			<p>If you provide us with access to your social media account, you acknowledge and agree that we may collect the information available in your social media account (including your name, profile photos, gender, age, city, country, email and mobile contact details) and use that information in accordance with this Privacy Policy.  You should use the privacy settings available in your social media account to ensure that personal information that you do not wish, or are not entitled, to disclose, is not available.</p>
+			<p>If you follow a link on our Website to another site, the owner of that site may have its own privacy policy relating to your personal information.  We suggest you review that site’s privacy policy before you provide personal information.  Your relationship with the provider of your social media account will be governed by separate terms and conditions and you must at all times comply with those terms and conditions.</p>
+			<p>We may also collect technical information whenever you log on to, or visit the public version of, the Website.  This may include information about the way Users arrive at, browse through and interact with our Website.  We may collect this type of technical information through the use of cookies and other means.  Cookies are alphanumeric identifiers that we transfer to your computer’s hard drive to enable our systems to recognise your browser.  If you want to disable cookies, you may do so by changing the settings on your browser.  However, if you do so, you may not be able to use all of the functions on the Website.  We use the technical information we collect to have a better understanding of the way people use our Website, to improve the way it works and to personalise it to be more relevant and useful to your particular needs.  We may also use this information to assist in making any advertising we display on the Website more personalised and applicable to your interests.</p>
+		</div>
+	</div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+<!-- jQuery --> 
+
+<!-- Bootstrap Core JavaScript --> 
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script> 
+
+<!-- Metis Menu Plugin JavaScript --> 
+<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script> 
+
+<!-- Morris Charts JavaScript --> 
+<script src="../bower_components/raphael/raphael-min.js"></script> 
+
+<!-- Custom Theme JavaScript --> 
+<script src="../dist/js/sb-admin-2.js"></script> 
+<script>
+	jQuery(document).ready(function(){
+			jQuery(".btnSearch").click(function () {
+				jQuery(".topform").slideToggle();
+				jQuery(".topform").toggleClass("open");
+			}); 
+		});
+</script> 
+<script type="text/javascript" src="../../assets/js/materialmenu.jquery.js"></script> 
+<script>
+		
+		
+		
+      $('.material-menu nav > ul').materialmenu({
+        /**
+         * Page title, showed on mobile devices.
+         * @type string
+         */
+        title: '',
+        /**
+         * Tells if title can be showed on mobile devices (only).
+         * @type boolean
+         */
+        showTitle: true
+      });
+    </script> 
+<script src="../dist/css/editor/simple.js"></script> 
+<script src="../dist/css/editor/wysihtml5-0.3.0.min.js"></script> 
+<script>
+    $(function () {
+        var editor = new wysihtml5.Editor("wysihtml5-textarea", {// id of textarea element
+            toolbar: "wysihtml5-editor-toolbar", // id of toolbar element
+            style:                true,
+            parserRules: wysihtml5ParserRules, // defined in parser rules set 
+            stylesheets: ["../dist/css/editor/editor.css"]
+        });
+    });
+
+</script> 
+<script>
+    $(function () {
+        var editor = new wysihtml5.Editor("wysihtml5-textarea-short-description", {// id of textarea element
+            toolbar: "wysihtml5-editor-toolbar-short-description", // id of toolbar element
+            style:                true,
+            parserRules: wysihtml5ParserRules, // defined in parser rules set 
+            stylesheets: ["../dist/css/editor/editor.css"]
+        });
+    });
+	
+	
+	
+	 $(document).ready(function () {
+        first_run = true;
+        ShowHide_div_Quantity();
+        first_run = false;
+		$('#div_NoOfUses').hide();
+		
+		
+
+    });
+	$('input[Name="SingleUse"]').click(function () {
+        ShowHide_div_NoOfUses();
+    });
+	 function ShowHide_div_NoOfUses() {
+        if ($('input[Name="SingleUse"]:checked').val() === '1') {
+            $('#NoOfUses').val('1');
+            $('#div_NoOfUses').hide();
+        } else {
+            $('#div_NoOfUses').show();
+            if (!first_run) {
+                $('#NoOfUses').focus();
+                $('#NoOfUses').val(null);
+            }
+            ;
+        }
+    }
+	
+	function ShowHide_div_Quantity() {
+        if ($('#LimitedQuantity').is(':checked')) {
+            $('#div_Quantity').slideToggle();
+            if (!first_run) {
+                $('#Quantity').focus();
+				 $('#Quantity').val('0');
+            }
+            ;
+        } else {
+            $('#div_Quantity').hide();
+            $('#Quantity').val('0');
+        }
+    }
+    $('#LimitedQuantity').click(function () {
+        ShowHide_div_Quantity();
+    });
+
+</script>
+
+
+
+
+<script type="text/javascript">
+	var windowsize = $(window).width();
+		if(windowsize >= 768){
+			$(window).scroll(function () {
+			if (jQuery(this).scrollTop() > 150) {
+				jQuery('#header').addClass('scrolled');
+				
+			} else {
+				jQuery('#header').removeClass('scrolled');
+			}
+		});
+		}
+
+		
+    </script> 
+</body>
+</html>

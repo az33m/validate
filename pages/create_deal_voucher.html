@@ -1,0 +1,242 @@
+<link rel="stylesheet" href="assets/bower_components/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css">
+<div class="row" ng-controller="voucherController">
+    <div class="col-lg-12">
+        <form role="form" class="voucherForm" ng-submit="createDealVoucher();">
+            <div class="row">
+                <div  class="col-lg-7">
+                    <div class="form-group">
+                        <label>Voucher Title:</label>
+                        <input class="form-control" ng-model="voucher_title" placeholder="Enter a title for your Deal Voucher e.g. Deal Voucher" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label>Purchase Start:</label>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="purchase_start" role="button" data-toggle="dropdown" data-target="#" href="">
+                                        <div class="input-group"><input type="text" class="form-control" placeholder="Purchase Start Time" data-ng-model="purchase_start | date : 'dd/MM/yyyy HH:mm'"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="purchase_start" data-datetimepicker-config="{ dropdownSelector: '#purchase_start', startView:'day' }" data-on-set-time="onTimeSet(newDate, oldDate)"/>
+                                    </ul>
+                                </div>
+                                <!--input class="form-control" placeholder="Purchase Start Time" id="purchase_start" ng-model="purchase_start" required="required"-->
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label>Purchase Expiry:</label>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="purchase_expiry" role="button" data-toggle="dropdown" data-target="#" href="">
+                                        <div class="input-group"><input type="text" placeholder="Purchase Expiry Time" class="form-control" data-ng-model="purchase_expiry| date : 'dd/MM/yyyy HH:mm'"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="purchase_expiry" data-datetimepicker-config="{ dropdownSelector: '#purchase_expiry' }" data-on-set-time="onTimeSet(newDate, oldDate)"/>
+                                    </ul>
+                                </div>
+                                <!--input class="form-control" placeholder="Purchase Expiry Time" id="purchase_expiry" ng-model="purchase_expiry" required="required"-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Merchant:</label>
+                        <input class="form-control" ng-model="merchant_name" placeholder="Merchant Name">
+                    </div>
+
+                    <!--<div class="form-group">
+                      <label>Retail Value:</label>
+                      <input class="form-control" ng-model="retail_value" id="retail_value" placeholder="Enter retail value e.g. Deal Voucher" required="required">
+                    </div>-->
+
+                    <div class="form-group" ng-init="sigle_or_multi_use = 'single'">
+                        <label>Select Use:  &nbsp;&nbsp;&nbsp;</label>
+                        <label>
+                            <input type="radio" ng-model="sigle_or_multi_use" name="sigle_or_multi_use" id="optionsRadios1" value="single" checked="checked" required="required" />
+                            Single Use &nbsp;&nbsp;&nbsp; </label>
+                        <label>
+                            <input type="radio" ng-model="sigle_or_multi_use" name="sigle_or_multi_use" id="optionsRadios2" value="multi" required="required" />
+                            Multi Use </label>
+                    </div>
+                    <div class="form-group" id="voucher_usage_limit" ng-show="sigle_or_multi_use == 'multi'">
+                        <label>Number of times voucher can be validated:</label>
+                        <input class="form-control" ng-model="no_of_uses" name="no_of_uses" id="no_of_uses" value="1" placeholder="Leave blank if unlimited">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label>Retail Value:</label>
+                                <input class="form-control" ng-model="retail_value" id="retail_value" placeholder="Enter retail value" required="required">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label>Deal Value:</label>
+                                <input class="form-control" ng-model="deal_value" id="deal_value" placeholder="Enter deal value" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-init="for_or_until = 'for'">
+                        <label>Select Validity:  &nbsp;&nbsp;&nbsp;</label>
+                        <label>
+                            <input type="radio" ng-model="for_or_until" name="for_or_until" class="for_or_until" id="optionsRadios2" value="until" required="required" />
+                            Until &nbsp;&nbsp;&nbsp; </label>
+                        <label>
+                            <input type="radio" ng-model="for_or_until" name="for_or_until" class="for_or_until" id="optionsRadios1" value="for" checked="checked" required="required" />
+                            For </label>
+                    </div>
+
+                    <div class="form-group" ng-show="for_or_until == 'for'">
+                        <label>Valid For:</label>
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5" ng-init="frequency = 'months'">
+                                <select class="form-control" ng-model="frequency" >
+                                    <option value="hours">Hour(s)</option>
+                                    <option value="days">Day(s)</option>
+                                    <option value="weeks">Week(s)</option>
+                                    <option value="months">Month(s)</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <input class="form-control" type="number" ng-keyup="validateFrqVal()" ng-model="$parent.frequency_value" placeholder="Maximum # of hours is 144" ng-if="frequency == 'hours'" max="144" ng-required="frequency != ''" />
+                                <input class="form-control" type="number" ng-keyup="validateFrqVal()" ng-model="$parent.frequency_value" placeholder="Maximum # of days is 14" ng-if="frequency == 'days'" max="14" ng-required="frequency != ''" />
+                                <input class="form-control" type="number" ng-keyup="validateFrqVal()" ng-model="$parent.frequency_value" placeholder="Maximum # of weeks is 52" ng-if="frequency == 'weeks'" max="52" ng-required="frequency != ''" />
+                                <input class="form-control" type="number" ng-keyup="validateFrqVal()" ng-model="$parent.frequency_value" placeholder="Maximum # of months is 12" ng-if="frequency == 'months'" max="12" ng-required="frequency != ''" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" ng-if="for_or_until == 'for'">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label>Valid From:</label>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="valid_from" role="button" data-toggle="dropdown" data-target="#" href="">
+                                        <div class="input-group"><input type="text" placeholder="Valid From Time" class="form-control" data-ng-model="$parent.valid_from | date : 'dd/MM/yyyy HH:mm'"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="$parent.valid_from" data-datetimepicker-config="{ dropdownSelector: '#valid_from' }" data-on-set-time="onTimeSet(newDate, oldDate)"/>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" ng-if="for_or_until === 'until'">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label>Valid From:</label>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="valid_from" role="button" data-toggle="dropdown" data-target="#" href="">
+                                        <div class="input-group"><input type="text" class="form-control" placeholder="Valid From Time" data-ng-model="$parent.valid_from | date : 'dd/MM/yyyy HH:mm'"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="$parent.valid_from" data-datetimepicker-config="{ dropdownSelector: '#valid_from', startView:'day' }" data-on-set-time="onTimeSet(newDate, oldDate)"/>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label>Valid Until:</label>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="valid_until" role="button" data-toggle="dropdown" data-target="#" href="">
+                                        <div class="input-group"><input type="text" placeholder="Valid Until Time" class="form-control" data-ng-model="$parent.valid_until | date : 'dd/MM/yyyy HH:mm'"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="$parent.valid_until" data-datetimepicker-config="{ dropdownSelector: '#valid_until' }" data-on-set-time="onTimeSet(newDate, oldDate)"/>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox">
+                        <label>
+                            <input  type="checkbox" id="validateQuality" ng-model="limit_quantity">
+                            Limited Quantity </label>
+                    </div>
+
+                    <div id="div_Quantity"  class="form-group" ng-show="limit_quantity">
+                        <label for="Quantity">Quantity:</label>
+                        <input class="form-control" ng-model="quantity" id="quantity" type="text" ng-required="limit_quantity" placeholder="Enter the number of Vouchers available">
+                    </div>
+
+
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+                <div  class="col-lg-5">
+                    <div class="vouchers-image"> <img src="assets/dist/images/voucher-image.jpg" class="img-responsive" />
+                        <button class="chooseVoucherImage">Choose voucher image</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row (nested) -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="short_description">Short Description:</label>
+                        <div text-angular ng-model="short_description"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="long_description">Long Description:</label>
+                        <div text-angular ng-model="long_description"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row stipRow">
+                <div class="col-md-12 stripesBG">
+                    <label for="TermsOfUse">Terms of Use:</label>
+                    <div class="form-group">
+                        <select
+                            ng-options="item as item.label for item in terms track by item.id" 
+                            multiple
+                            ng-model="terms_of_use"
+                            bs-duallistbox
+                            ></select>
+                        <!--select id="terms" class="form-control" multiple ng-model="terms_of_use">
+                          <option value="2">No Cashbacks</option>
+                          <option value="3">No refunds unless required by law</option>
+                          <option value="4">Not available for use on public holidays</option>
+                          <option value="5">Bookings Essential</option>
+                          <option value="6">Subject to Availability</option>
+                          <option value="7">Not to be used with any other offer</option>
+                          <option value="8">R18 for alcohol</option>
+                          <option value="9">24 Hour cancellation policy applies or voucher is void.</option>
+                          <option value="10">Valid for eat in only</option>
+                          <option value="11">Valid for set menu only</option>
+                        </select-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div  class="col-lg-12">
+                    <button type="submit" class="btn large btn-primary">Create Voucher</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".chooseVoucherImage").click(function () {
+            $('#voucher_image').trigger('click');
+        });
+        $('#retail_value, #deal_value').on('click', function () {
+            $(this).attr('placeholder', '$0.00');
+        });
+        //$('#purchase_expiry').datepicker({format: "dd/mm/yyyy", autoclose: true});
+//        $('#purchase_start').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+//        
+//        
+//        $('#purchase_expiry').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+//        
+        //$('#purchase_expiry').datetimepicker({ format: 'DD/MM/YYYY HH:mm' });
+    });
+</script>

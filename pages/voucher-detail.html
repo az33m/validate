@@ -1,0 +1,223 @@
+<div class="row" ng-controller="CheckDetailController">
+    <div class="col-lg-12">
+
+        <div class="check-details">
+            <div class="row" ng-if="checkStatus()">
+                <div class="col-md-6 col-sm-12">
+                    <label class="form-label">Enter Amount:</label>
+                    <input class="form-control" type="text" placeholder="$00.00" onclick="viewValuePopUp();" />
+                </div>
+            </div>
+
+            <h1>Gift Voucher</h1>
+            <div class="gift-vouchers-details">
+                <div class="wrap">
+                    <div class="box remove-bottom-border">
+                        <div class="left"><label>Voucher Code:</label></div>
+                        <div class="right"><span>{{voucherDetails.code}}</span></div>
+                    </div>
+                    <div class="box gray remove-left-border remove-bottom-border">
+                        <div class="left"><label>Status:</label></div>
+                        <div class="right"><span>{{voucherDetails.status}}</span></div>
+                    </div>
+                </div>
+
+
+                <div class="wrap">
+                    <div class="box gray remove-bottom-border">
+                        <div class="left"><label>Merchant:</label></div>
+                        <div class="right"><span>{{MerchantName}}</span></div>
+                    </div>
+                    <div class="box remove-left-border remove-bottom-border">
+                        <div class="left"><label>Voucher Title:</label></div>
+                        <div class="right"><span>{{voucherDetails.relations.voucher_parameter.data.title}}</span></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="box remove-bottom-border">
+                        <div class="left"><label>Customer:</label></div>
+                        <div class="right"><span>{{ voucherDetails.relations.customer.data.first_name}} {{voucherDetails.relations.customer.data.last_name}}</span></div>
+                    </div>
+                    <div class="box gray remove-left-border remove-bottom-border">
+                        <div class="left"><label>Recipient Email:</label></div>
+                        <div class="right"><span>{{voucherDetails.recipient_email}}</span></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="box gray remove-bottom-border">
+                        <div class="left"><label>Purchase Date:</label></div>
+                        <div class="right"><span>{{voucherDetails.created_at| date:'dd/MM/yyyy HH:mm'}}</span></div>
+                    </div>
+                    <div class="box remove-left-border remove-bottom-border">
+                        <div class="left"><label>Delivery Date:</label></div>
+                        <div class="right"><span>{{voucherDetails.delivery_date| date:'dd/MM/yyyy HH:mm'}}</span></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="box remove-bottom-border ">
+                        <div class="left"><label>Voucher Value:</label></div>
+                        <div class="right"><span>${{voucherDetails.value}}</span></div>
+                    </div>
+                    <div class="box gray remove-left-border remove-bottom-border">
+                        <div class="left"><label>Expiry Date:</label></div>
+                        <div class="right"><span>{{voucherDetails.expiry_date| date:'dd/MM/yyyy HH:mm'}}</span></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="box gray remove-bottom-border">
+                        <div class="left"><label>Voucher Balance:</label></div>
+                        <div class="right"><span>${{voucherDetails.balance}}</span></div>
+                    </div>
+                    <div class="box remove-left-border remove-bottom-border">
+                        <div class="left"><label>Allowed Validations:</label></div>
+                        <div class="right"><span>{{allowedValidations}}</span></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="box remove-bottom-border">
+                        <div class="left"><label>Validate Guarantee:</label></div>
+                        <div class="right"><span>-</span></div>
+                    </div>
+                    <div class="box gray remove-left-border remove-bottom-border">
+                        <div class="left"><label>Validations Made:</label></div>
+                        <div class="right"><span>{{voucherDetails.validation_times}}</span></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="box gray">
+                        <div class="left"><label>Last Validation:</label></div>
+                        <div class="right"><span>{{lastValidation| date:'dd/MM/yyyy HH:mm'}}</span></div>
+                    </div>
+                    <div class="box remove-left-border ">
+                        <div class="left"><label>Validations Left:</label></div>
+                        <div class="right"><span>{{validationLefts}}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="validate-options">
+                <button ng-if="checkStatus()" class="validate-check btn" onclick="viewValuePopUp();">Validate</button>
+                <button class="validate-cancel btn" ui-sref="dashboard.check-voucher">Cancel</button>
+            </div>
+        </div>
+
+        <!-- <div class="voucher-history" id="no-more-tables" ng-class="{ overlay : loadingVoucherLog == false"> -->
+        <div class="voucher-history" id="no-more-tables" data-target="voucher-history">
+            <h1>Voucher Log </h1>
+            <table class="cf table table-striped table-condensed table-hover table-bordered" ng-if="voucherLogExist">
+                <thead class="cf">
+                    <tr>
+                        <th width="25%">Date/Time</th>
+                        <!--                               <th width="16%">Code</th> -->
+                        <th width="35%">Merchant Name</th>
+                        <th width="20%">Redeemed ($)</th>
+                        <th width="20%">Balance ($)</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="voucherLogItem in voucherLog| orderBy: 'created_at':true track by $index">
+                        <td data-title="Date/Time">{{voucherLogItem.created_at| date:'dd/MM/yyyy HH:mm' }}</td>
+                        <!-- <td data-title="Code">{{voucherLogItem.relations.voucher.data.code | voucherNum}}</td> -->
+                        <td data-title="Merchant Name">{{voucherLogItem.relations.business.data.business_name}}</td>
+                        <td data-title="Redeemed ($)">${{voucherLogItem.value}}</td>
+                        <td data-title="Balance ($)">${{voucherLogItem.balance}}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <p ng-if="!voucherLogExist">There is no Validation Log</p>
+
+            <!-- <ul class="pagination pull-right">
+                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            </ul> -->
+
+        </div>
+    </div>
+
+
+
+    <div class="modal fade bs-example-modal-lg" id="enter-value-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <div  class="voucher-checker">
+                        <h1>Enter Amount </h1>
+                        <div class="voucher-checker-contents">
+                            <div class="vocher-entered-data box">
+                                <input type="text" class="input-number currency" placeholder="$00.00" />
+                            </div>
+                            <div class="vocher-submit-button box">
+                                <input type="submit" value="Validate" ng-click="validateBtn()"  />
+                            </div>
+                            <div class="voucher-buttons box">
+                                <div class="left">
+                                    <input id="7" ng-click="addNum(7)" type="submit" value="7"  />
+                                    <input id="8" ng-click="addNum(8)" type="submit" value="8"  />
+                                    <input id="9" ng-click="addNum(9)" type="submit" value="9"  />
+                                    <input id="4" ng-click="addNum(4)" type="submit" value="4"  />
+                                    <input id="5" ng-click="addNum(5)" type="submit" value="5"  />
+                                    <input id="6" ng-click="addNum(6)" type="submit" value="6"  />
+                                    <input id="1" ng-click="addNum(1)" type="submit" value="1"  />
+                                    <input id="2" ng-click="addNum(2)" type="submit" value="2"  />
+                                    <input id="3" ng-click="addNum(3)" type="submit" value="3"  />
+                                    <input type="submit" ng-click="addNum(0)" value="0" class="extra-large"  />
+
+                                    <!-- <input type="submit" ng-click="addNum('.')" value="." disabled /> -->
+                                </div>
+                                <div class="right">
+                                    <input type="submit" class="subdel" value="del" />
+                                    <input type="submit" class="subclear" value="clear"  />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+    var windowsize = $(window).width();
+    if (windowsize >= 768) {
+        $(window).scroll(function () {
+            if (jQuery(this).scrollTop() > 150) {
+                jQuery('#header').addClass('scrolled');
+
+            } else {
+                jQuery('#header').removeClass('scrolled');
+            }
+        });
+    }
+
+    function viewValuePopUp() {
+
+        $('#enter-value-popup').modal('show');
+        $('#enter-value-popup').on('shown.bs.modal', function () {
+            $(".input-number").focus();
+        });
+    }
+
+
+</script> 

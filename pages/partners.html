@@ -1,0 +1,18 @@
+<div class="row" ng-controller="partnerController">
+    <div class="col-lg-12">
+        <h1>Our Partners</h1>
+        <div class="listPartners">
+            <div class="row">
+                <div class="partner dashboard-partner" ng-repeat="partner in partners" ng-model="partners">
+                    <!--<a ui-sref="dashboard/partner-detail({ partner_id: partner.id })">-->
+                    <!--<a ui-sref="partners/partner-detail({ partner_id: partner.id })">-->
+                    <a ui-sref="dashboard.partnersDetail({ partner_id: partner.id })">
+                        <div class="image" ng-if="partner.relations.business_logos.data.links.business_logo_link"><img src="{{partner.relations.business_logos.data.links.business_logo_link}}" class="img-resposive"></div>
+                        <div class="image" ng-if="!partner.relations.business_logos.data.links.business_logo_link"><img src="http://dummyimage.com/183x183/cccccc/666666&text=No+Image" class="img-resposive"></div>
+                        <h4>{{partner.business_name}} {{partner.id}}</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

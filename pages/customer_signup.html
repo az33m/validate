@@ -1,0 +1,118 @@
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datepicker.css" />
+<main>
+    <section id="customer-signup" class="innerpage">
+        <div class="container">
+            <form class="form-horizontal" ng-submit="registerCustomer();" ng-controller="customerSignupController" data-toggle="validator" role="form" >
+                <h1>Customer Sign up</h1>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Email:</label>
+                            <input type="email" ng-model="email" class="form-control" placeholder="Enter your email" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password:</label>
+                            <input type="password" ng-model="password" class="form-control" placeholder="Enter your password" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password Confirmation:</label>
+                            <input type="password" ng-model="conf_password" class="form-control" placeholder="Confirm your password" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">First Name:</label>
+                            <input type="text" ng-model="first_name" class="form-control" placeholder="Enter first name" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name:</label>
+                            <input type="text" ng-model="last_name" class="form-control" name="Enter last name" />
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="form-label">Gender:</label><br>
+                                    <input name="gender" type="radio" ng-model="gender" value="male" required="required" checked="checked" /> Male <span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input name="gender" type="radio" ng-model="gender" value="female" required="required" /> Female
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="form-label">Date of Birth:</label>
+                                    <input type="text" ng-model="date_of_birth" id="date_of_birth" class="form-control date" placeholder="dd/mm/yy"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Title:</label>
+                            <select class="form-control" ng-model="title">
+                                <option>Mr.</option>
+                                <option>Mrs.</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Notify Deal:</label>
+                            <input type="checkbox" ng-model="notify_deal" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">I have read and accept the terms and conditions of validate</label>
+                            <input type="checkbox" ng-model="terms_conditions" required="required" />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group" >
+                            <label class="form-label">Region:</label>
+                            <select  class="form-control" id="region_id" name="region_id" ng-model="region">
+                                <option value="1">SELECT REGION</option>
+                                <!--<option ng-repeat="regionVal in regions.data" value="{{regionVal.id}}">{{regionVal.region}}</option>-->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subrub:</label>
+                            <select ng-model="subrub" class="form-control" id="suburb_id" name="suburb_id">
+                                <option value="1">SELECT SUBRUB</option>
+                                <option ng-repeat="subrubVal in subRubs.data" value="{{subrubVal.id}}">{{subrubVal.nz_town}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group" >
+                            <label class="form-label">Postal Code:</label>
+                            <select ng-model="postal_code" class="form-control" id="postal_code_id" name="postal_code_id">
+                                <option value="1">SELECT POSTAL CODE</option>
+                                <!--<option ng-repeat="postcodeVal in postelCodes.data" value="{{postcodeVal.id}}">{{postcodeVal.postcode}}</option>-->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address 1:</label>
+                            <input type="text" ng-model="address_1" class="form-control" placeholder="Enter your address" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address 2:</label>
+                            <input type="text" ng-model="address_2" class="form-control" placeholder="Enter your address" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone:</label>
+                            <input type="text" ng-model="phone" class="form-control" placeholder="Enter your phone number" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Mobile:</label>
+                            <input type="text" ng-model="mobile" class="form-control" placeholder="Enter your mobile number" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <button class="btn btn-primary">Create Customer</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
+                    	<input type="button" class="btn btn-danger" value="Cancel" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+<script src="assets/js/bootstrap-datepicker.js"></script>
+<script>
+    $('#date_of_birth').datepicker({format: "dd/mm/yyyy", autoclose: true});
+</script>

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 style="float:left;">Business Types</h1>
+        <ul class="pagination pull-right" style="margin: 20px auto;">
+            <li><a href="#" aria-label="Previous"><span aria-hidden="true" class="fa fa-plus"></span> Add</a></li>
+        </ul>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row" ng-controller="SettingsController">
+    <div class="col-lg-12">
+        
+        <div class="voucher-history" id="no-more-tables" style="margin-top: 0px;">
+            
+            <table class="cf table table-striped table-condensed table-hover table-bordered" ng-init="getBusinessTypes();">
+                <thead class="cf">
+                    <tr>
+                        <th width="20%">Business ID</th>
+                        <th width="60%">Business Type</th>
+                        <th width="20%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="business_type in business_types" ng-model="business_types">
+                        <td data-title="Business ID">{{business_type.id}}</td>
+                        <td data-title="Business Type">{{business_type.type}}</td>
+                        <td data-title="Action"><a class="action-edit fa fa-pencil-square-o" href="#"></a> <span class="action-divider">&nbsp;</span> <a class="action-delete fa fa-times-circle" href="#"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

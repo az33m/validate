@@ -1,0 +1,188 @@
+<main class="partnersPage" ng-controller="publicPartnerController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row" ng-model="partner_detail">
+                    <div class="voucher-details-wrap">
+                        <div class="voucher-desc">
+                            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
+                                        <div class="voucher-by">
+                                            <div class="image">
+                                                <img ng-if="partner_detail.relations.business_logos.data.links.business_logo_link" src="{{partner_detail.relations.business_logos.data.links.business_logo_link}}" class="img-responsive" alt="{{partner_detail.business_name}}" style="max-width:150px;" />
+                                                <img ng-if="!partner_detail.relations.business_logos.data.links.business_logo_link" src="http://dummyimage.com/150x150/cccccc/666666&text=No+Image" class="img-responsive" alt="{{partner_detail.business_name}}" style="max-width:150px;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 right">
+                                        <h1 ng-if="partner_detail.business_name">{{partner_detail.business_name}}</h1>
+                                        <h1 ng-if="!partner_detail.business_name">N / A</h1>
+                                        <div class="location"><span class="fa fa-map-marker "></span> {{partner_detail.address1}} {{partner_detail.relations.city.data.nz_town}} {{partner_detail.relations.city.data.nz_city}} {{partner_detail.relations.postcode.data.postcode}}</div>
+                                        <div class="phone"><span class="fa fa-phone "></span> {{partner_detail.phone}}</div>
+                                        <div class="link"><a id="merchant_map_link" href="javascript:void(0);" data-toggle="modal" data-target="#merchant_map" data-address="{{partner_detail.address1}} {{partner_detail.relations.city.data.nz_town}} {{partner_detail.relations.city.data.nz_city}}">View on Google Map</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 removeLeftPad">
+                                <div class="available-hour">
+                                    <h2>Available Hours</h2>
+                                    <div class="hours-desc">
+                                        <div class="box">Mon: 09:00am to 12:00pm</div>
+                                        <div class="box gray">Tue: 09:00am to 12:00pm</div>
+                                        <div class="box">Wed: 09:00am to 12:00pm</div>
+                                        <div class="box gray">Thu: 09:00am to 12:00pm</div>
+                                        <div class="box">Fri: 09:00am to 12:00pm</div>
+                                        <div class="box gray">Sat: 09:00am to 12:00pm</div>
+                                        <div class="box">Sun: 09:00am to 12:00pm</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="about-voucher guuter ">
+                            <h2>About Bangalore Polo Club:</h2>
+                            <div class="row">
+                                <div class="col-lg-7 col-md-12">
+                                    <p>Unsaddle after a long day on the field and dive into the opulent clubrooms of the Bangalore Polo Club. A complete world away from the chaos of bustling Courtenay Place, the much heralded and widely revered BPC celebrates a rich tradition of excellence and triumph with sumptuous cuisine and delicious drinks. Revel in a relaxed and sophisticated atmosphere, taking in the eclectic setting. Whether you're stopping by for an after-work beverage or treating that special someone to a uniquely luxurious dining experience, the Bangalore Polo Club will be your Wellington favourite from here on in.</p>
+                                </div>
+                                <div class="col-lg-5 col-md-12">
+                                    <div class="voucher-gallery">
+                                        <div class="item"><a class="fancybox" rel="group" href="dashboard/dist/images/gallery/large/lg-pic2.jpg" ><img src="dashboard/dist/images/gallery/1.jpg" class="img-responsive"/></a></div>
+                                        <div class="item"><a class="fancybox" rel="group" href="dashboard/dist/images/gallery/large/lg-pic.jpg" ><img src="dashboard/dist/images/gallery/2.jpg" class="img-responsive"/></a></div>
+                                        <div class="item"><a class="fancybox" rel="group" href="dashboard/dist/images/gallery/large/lg-pic2.jpg" ><img src="dashboard/dist/images/gallery/1.jpg" class="img-responsive"/></a></div>
+                                        <div class="item"><a class="fancybox" rel="group" href="dashboard/dist/images/gallery/large/lg-pic.jpg" ><img src="dashboard/dist/images/gallery/2.jpg" class="img-responsive"/></a></div>
+                                        <div class="item"><a class="fancybox" rel="group" href="dashboard/dist/images/gallery/large/lg-pic2.jpg" ><img src="dashboard/dist/images/gallery/1.jpg" class="img-responsive"/></a></div>
+                                        <div class="item"><a class="fancybox" rel="group" href="dashboard/dist/images/gallery/large/lg-pic.jpg" ><img src="dashboard/dist/images/gallery/2.jpg" class="img-responsive"/></a></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="listPartnerVoucher full-width">
+                            <div class="row removeMargin" ng-model="active_vouchers">
+
+                                <div class="col-md-12" ng-if="!active_vouchers.length"><p>No vouhcer found.</p></div>
+
+                                <div class="voucherBox" ng-show="active_vouchers.length" ng-repeat="voucher in active_vouchers">
+                                    <div class="voucherImage">
+                                        <img src="{{voucher.relations.voucher_image.data.links.voucher_image_link}}" />
+                                        <div class="share">
+                                            <!-- <img src="../dist/images/sharebtns.png" class="img-responsive" alt="Image Name" /> -->
+                                            <div>
+                                                <div class="fb-like fb_iframe_widget" data-href="https://stage.validate.co.nz/GiftVouchersParameters/71" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=1589058994679439&amp;container_width=361&amp;href=https%3A%2F%2Fstage.validate.co.nz%2FGiftVouchersParameters%2F71&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=true&amp;show_faces=true">
+                                                    <span style="vertical-align: bottom; width: 120px; height: 20px;">
+
+                                                    </span>
+                                                    <a href="mailto:?body=Check%20out%20this%20Gift%20Voucher%20at%20Bangalore%20Polo%20Club%2C%20it%27s%20available%20for%20a%20limited%20time%20%0A%0Ahttp%3A%2F%2Fstage.validate.co.nz%2FGiftVouchersParameters%2F71&amp;subject=I%20think%20you%20would%20be%20interested%20in%20this%20offer%3A%20Gift%20Voucher" class="btn btn-info voucher-email">Email</a>						
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="desc">
+                                        <h4><a ui-sref="voucher-detail({ voucher_id: voucher.id })">{{voucher.title}}</a></h4>
+                                        <p ng-if="voucher.short_description">{{ voucher.short_description | limitTo: 38 }}{{voucher.short_description.length > 38 ? '...' : ''}}</p>
+                                        <p ng-if="!voucher.short_description">{{voucher.title}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<div class="modal fade bs-example-modal-lg" id="merchant_map" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="red-color">Validate</span> Merchant Location</h4>
+            </div>
+            <div class="modal-body" style="padding-bottom:0px;">
+
+                <div id="map" style="width:900px; height:500px;"></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?signed_in=true" async defer></script>
+
+<script>
+	var address = '';
+	$(document).ready(function () {
+		$('#merchant_map_link').click(function () {
+			address = $(this).data('address');
+			address = 'Lahore, Pakistan';
+		});
+
+		$("#merchant_map").on("shown.bs.modal", function () {
+			initMap($('#merchant_map_link').data('address'));
+		})
+	});
+
+
+
+	function initMap(address) {
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 16,
+			center: {lat: -42.57573673, lng: 172.04589844}
+		});
+		var geocoder = new google.maps.Geocoder();
+		geocodeAddress(geocoder, map, address);
+
+	}
+
+	function geocodeAddress(geocoder, resultsMap, address) {
+		geocoder.geocode({'address': address}, function (results, status) {
+			if (status === google.maps.GeocoderStatus.OK) {
+				resultsMap.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: resultsMap,
+					position: results[0].geometry.location,
+					animation: google.maps.Animation.BOUNCE
+				});
+			} else {
+				//alert('Geocode was not successful for the following reason: ' + status);
+				$.notify({
+					icon: 'glyphicon glyphicon-warning-sign',
+					title: '<strong>Error : </strong>',
+					message: 'Geocode was not successful for the following reason: ' + status,
+				}, {
+					allow_dismiss: false,
+					element: 'body',
+					type: "danger",
+					placement: {
+						from: "bottom",
+						align: "right"
+					},
+					delay: 5000,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					icon_type: 'class'
+				});
+			}
+		});
+	}
+
+</script>
+

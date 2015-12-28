@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 style="float:left;">Voucher Images Settings</h1>
+        <ul class="pagination pull-right" style="margin: 20px auto;">
+            <li><a ui-sref="dashboard.addVoucherImage" aria-label="Previous"><span aria-hidden="true" class="fa fa-plus"></span> Add</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row" ng-controller="SettingsController">
+    <div class="col-lg-12">
+        
+        <div class="voucher-history" id="no-more-tables" style="margin-top: 0px;">
+        
+        	<div class="col-lg-12 voucher-list-search">
+                <div class="col-lg-4 form-group input-group">
+                    <input class="form-control" ng-model="query" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" aria-label="Help"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="cf table table-striped table-condenseAd table-hover table-bordered" ng-init="getVoucherImages();">
+                <thead class="cf">
+                    <tr>
+                        <th width="10%">ID</th>
+                        <th width="20%">Voucher Type</th>
+                        <th width="25%">Voucher Image</th>
+                        <th width="25%">Created On</th>
+                        <th width="20%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="voucher_image in voucher_images.data | filter:query" ng-model="voucher_images">
+                        <td data-title="ID">{{voucher_image.id}}</td>
+                        <td data-title="Name">{{voucher_image.voucher_type}}</td>
+                        <td data-title="Image"><img src="{{voucher_image.links.voucher_image_link}}" style="width:19%"  /></td>
+                        <td data-title="Name">{{voucher_image.created_at}}</td>
+                        <td data-title="Action"><a class="action-edit fa fa-pencil-square-o" href="#"></a> <span class="action-divider">&nbsp;</span> <a class="action-delete fa fa-times-circle" href="#"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 style="float:left;">Vault</h1>
+        <ul class="pagination pull-right" style="margin: 20px auto;">
+            <li><a href="#" aria-label="Previous"><span aria-hidden="true" class="fa fa-history"></span> History</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row" ng-controller="VaultController">
+<!--<div class="row">-->
+    <div class="col-lg-12">
+        
+        <div class="voucher-history" id="no-more-tables" style="margin-top: 0px;">
+            
+            <table class="cf table table-striped table-condensed table-hover table-bordered" ng-init="getCustomerVault();">
+                <thead class="cf">
+                    <tr>
+                        <th width="10%">Code</th>
+                        <th width="35%">Merchant Name</th>
+                        <th width="15%">Voucher Type</th>
+                        <th width="15%">Balance ($)</th>
+                        <th width="25%">Expiry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vault in vaults" ng-model="vaults">
+                        <td data-title="Code">{{vault.code}}</td>
+                        <td data-title="Merchant Name">{{vault.business_name}}</td>
+                        <td data-title="Voucher Type">{{vault.relations.voucher_parameter.data.voucher_type}}</td>
+                        <td data-title="Value ($)">${{vault.balance}}</td>
+                        <td data-title="Expiry Date">{{vault.expiry_date}}</td>									
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

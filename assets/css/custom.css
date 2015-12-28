@@ -1,0 +1,36 @@
+.purchase-btn { background-color: #41DB70; padding:6px; color:#FFF;}
+.purchase-btn:hover { color:#FFF;}
+.voucher-list-search { padding:0px; clear:both; display:flex;  }
+.voucher-list-search .form-control { padding: 10px; height:auto; border-radius:0px; }
+.voucher-list-search .form-group { float:left; }
+.input-group-btn .btn-default { border-radius: 0px; background-color:#b99e89; color:#FFF; height:42px; }
+.input-group-btn .btn-default:hover { border-color:#f7964f; background-color:#f7964f; color:#FFF;}
+.action-edit { background-color:#FFF; color:#5B8DFF; font-size:25px; }
+.action-delete { background-color:#FFF; color:#D52828; font-size:25px; }
+.voucher-list-filter { background-color: #c7c7c7; float: left; height: 42px; line-height: 42px; margin-left:15px; opacity:0.2; }
+.nav > li > a { color:#858585 !important; }
+.nav > li:hover { color:#24B6AC !important; }
+.top-bar .nav > li > a > span { font-size:24px; padding-top:5px;}
+.material-menu-button { background:#24B6AC; }
+.no-padding { padding:0px;}
+
+.dashboard-partner .image{ height:185px !important; width:185px !important; }
+.partner .image{ height:197px; width:197px; }
+div.listPartners div.partner .image img { width:100% !important; max-height:100% !important; }
+.nav > li > a:focus, .nav > li > a:hover, .sidebar ul li a.active { background-color:#FFFFFF !important; color:#24B6AC !important;}
+.sidebar ul li .fa { display:inline-flex !important; }
+#voucher_type { text-transform:capitalize; }
+.bootstrap-duallistbox-container .filter { height:auto !important; }
+/*.nav > li > a:focus, .nav > li > a:hover, .sidebar ul li a.active { background-color: #b99e89 !important; }*/
+
+#purchase_voucher .modal-dialog { width:390px !important; }
+#purchase_voucher .modal-body { padding: 20px !important; }
+#purchase_voucher div.voucher-checker h1 { font-size: 20px !important; margin-bottom: 10px !important; margin-top: 0 !important; }
+#purchase_voucher div.vocher-entered-data input.input-number { width:100% !important; }
+div.voucher-buttons .right input[type="submit"] { margin-left:4px !important; }
+
+.purchase-voucher-image { width:78.1% !important; }
+.purchase-voucher-image .modal-body{ padding-bottom:0px !important;}
+.purchase-voucher-image .modal-content .innerlist { padding:0px !important; }
+.glyphicon-print { position:relative; right:5%; float:right; font-size: 25px; }
+.purcahse_voucher_print { cursor:pointer; }

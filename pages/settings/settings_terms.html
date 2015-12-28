@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 style="float:left;">Terms of Use</h1>
+        <ul class="pagination pull-right" style="margin: 20px auto;">
+            <li><a ui-sref="dashboard.addTermOfUse" aria-label="Previous"><span aria-hidden="true" class="fa fa-plus"></span> Add</a></li>
+        </ul>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row" ng-controller="SettingsController">
+    <div class="col-lg-12">
+        
+        <div class="voucher-history" id="no-more-tables" style="margin-top: 0px;">
+            
+            <table class="cf table table-striped table-condensed table-hover table-bordered" ng-init="getTermOfUse();">
+                <thead class="cf">
+                    <tr>
+                        <th width="20%">ID</th>
+                        <th width="60%">Title</th>
+                        <th width="20%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="term in terms_of_use" ng-model="terms_of_use">
+                        <td data-title="ID">{{term.id}}</td>
+                        <td data-title="Industry Title">{{term.name}}</td>
+                        <td data-title="Action"><a class="action-edit fa fa-pencil-square-o" ui-sref="dashboard.updateTermOfUse({term_id: term.id})"></a> <span class="action-divider">&nbsp;</span> <a class="action-delete fa fa-times-circle" href="#"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

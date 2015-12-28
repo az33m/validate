@@ -1,0 +1,110 @@
+<div class="row" ng-controller="MyVouchersController">
+    <div class="col-lg-12">
+
+        <div style="margin-top: 0px;" id="no-more-tables" class="voucher-history">
+            <div>
+                <h1 style="float:left;">List All Vouchers:</h1>
+            </div>
+            <div class="col-lg-12 voucher-list-search">
+                <div class="col-lg-4 form-group input-group">
+                    <input class="form-control" ng-model="query" placeholder="Enter Merchant Name">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" aria-label="Help"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+            </div>    
+            <table class="cf table table-striped table-condensed table-hover table-bordered">
+                <thead class="cf">
+                    <tr>
+                        <th width="12%">Purchase</th>
+                        <th width="24%">Merchant</th>
+                        <th width="29%">Voucher Title</th>
+                        <th width="10%">Type</th>
+                        <th width="12%">Quantity</th>
+                        <th width="13%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="voucher in my_vouchers| filter:query" ng-model="my_vouchers">
+                        <td data-title="Purchase"><a class="purchase-btn" href="javascript:void(0)" ng-click="purchaseVoucherPopup(voucher.id, voucher.voucher_type);" data-vouhcer_id="{{voucher.id}}" data-target="#purchase_voucher">Purchase</a></td>
+                        <td data-title="Merchant">{{voucher.business_name}}</td>
+                        <!--<td data-title="Merchant">{{voucher.relations.business.data.business_name}}</td>-->
+                        <td data-title="Voucher Title">{{voucher.title}}</td>
+                        <td data-title="Type">{{voucher.voucher_type}}</td>									
+                        <td data-title="Quantity">{{voucher.quantity}}</td>									
+                        <td data-title="Action"><a class="action-edit fa fa-pencil-square-o" href="#"></a> <span class="action-divider">&nbsp;</span> <a class="action-delete fa fa-times-circle" href="#"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade bs-example-modal-lg" id="purchase_voucher" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <div  class="voucher-checker">
+                        <h1>Enter Amount </h1>
+                        <div class="voucher-checker-contents">
+                            <div class="vocher-entered-data box">
+                                <input type="text" ng-model="voucher_amount" id="voucher_amount" class="input-number currency" placeholder="$00.00" value="0.00" ng-required="required" />
+                            </div>
+                            <div class="vocher-submit-button box">
+                                <input type="submit" value="Create" ng-click="purchaseVoucher()"  />
+                            </div>
+                            <div class="voucher-buttons box">
+                                <div class="left">
+                                    <input id="7" ng-click="addNum(7)" type="submit" value="7"  />
+                                    <input id="8" ng-click="addNum(8)" type="submit" value="8"  />
+                                    <input id="9" ng-click="addNum(9)" type="submit" value="9"  />
+                                    <input id="4" ng-click="addNum(4)" type="submit" value="4"  />
+                                    <input id="5" ng-click="addNum(5)" type="submit" value="5"  />
+                                    <input id="6" ng-click="addNum(6)" type="submit" value="6"  />
+                                    <input id="1" ng-click="addNum(1)" type="submit" value="1"  />
+                                    <input id="2" ng-click="addNum(2)" type="submit" value="2"  />
+                                    <input id="3" ng-click="addNum(3)" type="submit" value="3"  />
+                                    <input type="submit" ng-click="addNum(0)" value="0" class="extra-large"  />
+
+                                    <!-- <input type="submit" ng-click="addNum('.')" value="." disabled /> -->
+                                </div>
+                                <div class="right">
+                                    <input type="submit" class="subdel" value="del" />
+                                    <input type="submit" class="subclear" value="clear"  />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade bs-example-modal-lg" id="purchase_voucher_image" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog purchase-voucher-image">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span type="button" class="glyphicon glyphicon-print" id="purcahse_voucher_print" ng-click="takePrint();">Take Print</span>
+                    <h4 class="modal-title" id="myModalLabel"><span class="red-color">Validate Voucher</span></h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="innerlist">
+                        <img id="voucher_image" src=""  />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

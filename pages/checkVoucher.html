@@ -1,0 +1,110 @@
+<div class="row" ng-controller="CheckVoucher">
+    <div class="col-lg-12">
+        <div  class="voucher-checker">
+            <h1>Enter Voucher Code </h1>
+            <div class="voucher-checker-contents">
+                <form novalidate>
+                    <div class="vocher-entered-data box">
+                        <input type="text" name="input1" id="input1" class="input-number inputs" ng-model="nu.input1" value="" tab-index="1"   maxlength="3" autofocus/>
+                        <input type="text" name="input2"  id="input2" class="input-number inputs" ng-model="nu.input2" value="" maxlength="3" />
+                        <input type="text" name="input3" id="input3" class="input-number inputs inputs-last" ng-model="nu.input3" value="" maxlength="3"/>
+                    </div>
+                    <div class="vocher-submit-button box">
+                        <input type="submit" ng-click="validate()" value="Check" class="validate-inputs"  />
+                    </div>
+                </form>
+                <div class="voucher-buttons box">
+                    <div class="left">
+                        <input id="7" ng-click="addNum(7)" type="submit" value="7"  />
+                        <input id="8" ng-click="addNum(8)" type="submit" value="8"  />
+                        <input id="9" ng-click="addNum(9)" type="submit" value="9"  />
+                        <input id="4" ng-click="addNum(4)" type="submit" value="4"  />
+                        <input id="5" ng-click="addNum(5)" type="submit" value="5"  />
+                        <input id="6" ng-click="addNum(6)" type="submit" value="6"  />
+                        <input id="1" ng-click="addNum(1)" type="submit" value="1"  />
+                        <input id="2" ng-click="addNum(2)" type="submit" value="2"  />
+                        <input id="3" ng-click="addNum(3)" type="submit" value="3"  />
+                        <!-- <input type="submit" value="0" /> -->
+                        <input id="0" ng-click="addNum(0)" type="submit" value="0" class="extra-large"  />
+                        <!-- <input type="submit" value="." class="hide"  /> -->
+                    </div>
+                    <div class="right">
+                        <input type="submit" class="subdel" value="del" />
+                        <input type="submit" class="subclear" value="clear"  />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="voucher-history" id="no-more-tables">
+            <h1>Check Log</h1>
+            <table ng-if="checkLogData.length !== 0"  class="cf table table-striped table-condensed table-hover table-bordered">
+                <thead class="cf">
+                    <tr>
+                        <th width="25%">Date/Time</th>
+                        <th width="25%">Code</th>
+                        <th width="35%">Merchant Name</th>
+                        <!-- <th width="16%">Redeemed ($)</th> -->
+                        <th width="15%">Balance ($)</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="checkLogItem in checkLogData| orderBy: '_voucherLogDateTime':true | startFrom:currentPage * pageSize | limitTo:pageSize track by $index">
+                        <td data-title="Date/Time">{{checkLogItem._voucherLogDateTime| date:'dd/MM/yyyy HH:mm' }}</td>
+                        <td data-title="Code">{{checkLogItem._code| voucherNum}}</td>
+                        <td data-title="Merchant Name">{{checkLogItem._merchantName}}</td>
+                        <td data-title="Balance ($)">${{checkLogItem._balance}}</td>
+
+                    </tr>
+                    <!-- <tr>
+                            <td data-title="Date/Time">31/07/2015 / 09:17:25</td>
+                            <td data-title="Code">555-555-555</td>
+                            <td data-title="Merchant Name">Brent Thomson</td>
+                            <td data-title="Redeemed ($)">$250.00</td>
+                            <td data-title="Balance ($)">$250.00</td>
+                    
+                    </tr>
+                    <tr>
+                            <td data-title="Date/Time">31/07/2015 / 09:17:25</td>
+                            <td data-title="Code">555-555-555</td>
+                            <td data-title="Merchant Name">Brent Thomson</td>
+                            <td data-title="Redeemed ($)">$250.00</td>
+                            <td data-title="Balance ($)">$250.00</td>
+                            
+                    </tr>
+                    <tr>
+                            <td data-title="Date/Time">31/07/2015 / 09:17:25</td>
+                            <td data-title="Code">555-555-555</td>
+                            <td data-title="Merchant Name">Brent Thomson</td>
+                            <td data-title="Redeemed ($)">$250.00</td>
+                            <td data-title="Balance ($)">$250.00</td>
+                            
+                    </tr>
+                    <tr>
+                            <td data-title="Date/Time">31/07/2015 / 09:17:25</td>
+                            <td data-title="Code">555-555-555</td>
+                            <td data-title="Merchant Name">Brent Thomson</td>
+                            <td data-title="Redeemed ($)">$250.00</td>
+                            <td data-title="Balance ($)">$250.00</td>
+                            
+                    </tr> -->
+                </tbody>
+            </table>
+            <p ng-if="checkLogData.length === 0">There is no Check Log</p>
+
+            <ul class="pagination pull-right" ng-if="checkLogData.length !== 0">
+                <li><button href="#" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" aria-label="Previous"><span aria-hidden="true">&laquo;</span></button></li>
+
+                <li ng-repeat="page in getNumberOfPages(numberOfPages) track by $index">
+                    <button ng-click="setCurrentPage($index)">{{$index + 1}}</button>
+                </li>
+
+                <li><button href="#" ng-disabled="currentPage >= checkLogData.length / pageSize - 1" ng-click="currentPage = currentPage + 1" aria-label="Next"><span aria-hidden="true">&raquo;</span></button></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!-- /.row --> 
